@@ -1,5 +1,8 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  include Mandrill::Rails::WebHookProcessor
+
 
   # GET /invoices
   # GET /invoices.json
