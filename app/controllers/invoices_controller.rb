@@ -3,6 +3,10 @@ class InvoicesController < ApplicationController
   skip_before_action :verify_authenticity_token
   include Mandrill::Rails::WebHookProcessor
 
+  def handle_inbound(event)
+    event.user
+  end
+
 
   # GET /invoices
   # GET /invoices.json
@@ -22,22 +26,6 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1/edit
   def edit
-  end
-
-  # POST /invoices
-  # POST /invoices.json
-  def create
-    @invoice = Invoice.new(invoice_params)
-
-    respond_to do |format|
-      if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-        format.json { render :show, status: :created, location: @invoice }
-      else
-        format.html { render :new }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /invoices/1
