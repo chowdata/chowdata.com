@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
   resources :businesses
-
+  resources :locations
   resources :invoices
 
   devise_for :users
