@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
  
   belongs_to :business
   has_one :profile
+  has_many :invoices
 
 
   private
