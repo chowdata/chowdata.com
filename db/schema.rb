@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150323190210) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "profile_id"
-    t.integer  "business_id"
   end
 
   create_table "profiles", force: :cascade do |t|
