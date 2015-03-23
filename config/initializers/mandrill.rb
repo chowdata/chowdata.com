@@ -1,0 +1,12 @@
+require 'mandrill'
+
+if Rails.env == 'production'
+MANDRILL_API_KEY = ENV['PROD_MANDRILL_PASSWORD']
+ENDPOINT         = ENV['PROD_ENDPOINT']
+DOMAIN 		 = ENV['CHOWDATA_DOMAIN']
+else 
+MANDRILL_API_KEY = ENV['DEV_MANDRILL_PASSWORD']
+ENDPOINT         = ENV['DEV_ENDPOINT']
+DOMAIN           = ENV['CHOWDATA_DOMAIN']
+
+end

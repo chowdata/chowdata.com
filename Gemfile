@@ -34,6 +34,7 @@ gem 'rolify'
 
 # Email Processing
 gem 'mandrill-rails'
+gem 'mandrill-api'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
