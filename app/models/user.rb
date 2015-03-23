@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 private
   def build_default_associations
     self.build_business
-    self.business.build_profile
+    puts self.business
+    self.business.locations.build
   end
 
  
