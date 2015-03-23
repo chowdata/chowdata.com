@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
  
-<<<<<<< HEAD
   resources :businesses
   resources :locations
-=======
   resources :profiles
-
->>>>>>> add_profiles
   resources :invoices
 
   devise_for :users
