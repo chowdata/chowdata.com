@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 private
   def build_default_business
     self.build_business
-    self.save!
   end
 
  
