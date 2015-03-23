@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_one :business
-  before_create :build_default_business
+  before_create :build_default_associations
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 private
-  def build_default_business
+  def build_default_associations
     self.build_business
+    self.business.build_profile
   end
 
  
