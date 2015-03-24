@@ -1,4 +1,4 @@
-<%= form_for(@location) do |f| %>
+<%= form_for @location,  method: :patch do |f| %>
   <% if @location.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
@@ -9,6 +9,10 @@
       <% end %>
       </ul>
     </div>
+  <% end %>
+
+  <%= f.fields_for :profile do |p| %>
+    <%= p.text_field :inbound_email  %>@inbound.chowdata.com
   <% end %>
 
   <div class="actions">

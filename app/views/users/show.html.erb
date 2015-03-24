@@ -1,1 +1,6 @@
-show
+<h2>Your Locations</h2>
+<% current_user.business.locations.each do |location| %>
+<%= link_to "Edit Location", edit_location_path(location)  %>
+<% end %>
+
+
