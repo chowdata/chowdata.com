@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
  
   resources :businesses
+
   resources :locations
+
   resources :profiles
+
   resources :invoices
 
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  devise_for :users
+
+  get 'users/:id' => 'users#show', :as => :user
+
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
