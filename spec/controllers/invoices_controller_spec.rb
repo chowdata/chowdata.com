@@ -20,6 +20,10 @@ require 'rails_helper'
 
 RSpec.describe InvoicesController, type: :controller do
 
+  before :each do 
+    sign_in FactoryGirl.create(:user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Invoice. As you add validations to Invoice, be sure to
   # adjust the attributes here as well.
@@ -27,34 +31,34 @@ RSpec.describe InvoicesController, type: :controller do
     FactoryGirl.build(:invoice).attributes.symbolize_keys
   }
 
-  let(:invalid_attributes) { 
-    {vendor_name: nil }
+  let(:invalid_attributes) {  {vendor_name: nil} 
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # InvoicesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { } }
 
-  describe "GET #index" do
-    it "assigns all invoices as @invoices" do
+   describe "GET #index" do
+    it "assigns all invoices as @invoice" do
       invoice = Invoice.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:invoices)).to eq([invoice])
     end
   end
 
+
   describe "GET #show" do
     it "assigns the requested invoice as @invoice" do
       invoice = create(:invoice)
-      get :show, {:id => invoice.to_param}, valid_session
+      get :show, {:id => invoice.to_param}
       expect(assigns(:invoice)).to eq(invoice)
     end
   end
 
   describe "GET #new" do
     it "assigns a new invoice as @invoice" do
-      get :new, {}, valid_session
+      get :new, {} 
       expect(assigns(:invoice)).to be_a_new(Invoice)
     end
   end
@@ -64,39 +68,6 @@ RSpec.describe InvoicesController, type: :controller do
       invoice = Invoice.create! valid_attributes
       get :edit, {:id => invoice.to_param}, valid_session
       expect(assigns(:invoice)).to eq(invoice)
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Invoice" do
-        expect {
-          post :create, {:invoice => valid_attributes}, valid_session
-        }.to change(Invoice, :count).by(1)
-      end
-
-      it "assigns a newly created invoice as @invoice" do
-        post :create, {:invoice => valid_attributes}, valid_session
-        expect(assigns(:invoice)).to be_a(Invoice)
-        expect(assigns(:invoice)).to be_persisted
-      end
-
-      it "redirects to the created invoice" do
-        post :create, {:invoice => valid_attributes}, valid_session
-        expect(response).to redirect_to(Invoice.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved invoice as @invoice" do
-        post :create, {:invoice => invalid_attributes}, valid_session
-        expect(assigns(:invoice)).to be_a_new(Invoice)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:invoice => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
     end
   end
 

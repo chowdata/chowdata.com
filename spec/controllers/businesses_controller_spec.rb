@@ -19,7 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe BusinessesController, type: :controller do
-
+  
   # This should return the minimal set of attributes required to create a valid
   # Business. As you add validations to Business, be sure to
   # adjust the attributes here as well.
@@ -31,30 +31,25 @@ RSpec.describe BusinessesController, type: :controller do
     skip("Add a hash of attributes invalid for your model")
   }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # BusinessesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
   describe "GET #index" do
     it "assigns all businesses as @businesses" do
       business = Business.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}
       expect(assigns(:businesses)).to eq([business])
-    end
+     end
   end
 
   describe "GET #show" do
     it "assigns the requested business as @business" do
       business = Business.create! valid_attributes
-      get :show, {:id => business.to_param}, valid_session
+      get :show, {:id => business.to_param}
       expect(assigns(:business)).to eq(business)
     end
   end
 
   describe "GET #new" do
     it "assigns a new business as @business" do
-      get :new, {}, valid_session
+      get :new, {}
       expect(assigns(:business)).to be_a_new(Business)
     end
   end

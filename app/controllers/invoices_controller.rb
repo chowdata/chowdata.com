@@ -7,14 +7,11 @@ class InvoicesController < ApplicationController
   def handle_inbound(event)
     event.user
   end
-
-
-  # GET /invoices
-  # GET /invoices.json
+  
   def index
     @invoices = Invoice.all
   end
-
+ 
   # GET /invoices/1
   # GET /invoices/1.json
   def show

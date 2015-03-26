@@ -16,6 +16,7 @@ module ChowdataCom
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
