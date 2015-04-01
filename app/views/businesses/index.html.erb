@@ -10,11 +10,12 @@
   </thead>
 
   <tbody>
-    <% @businesses.each do |business| %>
+    <% @businesses.locations.each do |location| %>
       <tr>
-        <td><%= link_to 'Show', business %></td>
-        <td><%= link_to 'Edit', edit_business_path(business) %></td>
-        <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= location.id %></td>
+        <td><%= link_to 'Show', location.profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(location.profile) %></td>
+        <td><%= link_to 'Destroy', current_user.business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

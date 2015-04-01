@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.json
   def index
-    @businesses = Business.all
+    @businesses = current_user.business
   end
 
   # GET /businesses/1
@@ -70,6 +70,6 @@ class BusinessesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_params
-      params[:business]
+      params.require(:business).permit()
     end
 end

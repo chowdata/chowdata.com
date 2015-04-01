@@ -4,7 +4,7 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'factory_girl'
-require 'webmock/rspec'
+#require 'webmock/rspec'
 require 'web-console'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -29,7 +29,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
-  WebMock.disable_net_connect!(allow_localhost: true)
+#  WebMock.disable_net_connect!(allow_localhost: true)
 
   config.include Devise::TestHelpers, type: :controller
   config.include Warden::Test::Helpers

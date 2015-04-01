@@ -21,47 +21,31 @@ require 'rails_helper'
 RSpec.describe ProfilesController, type: :controller do
   
   before :each do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
-    @user = FactoryGirl.create :user
-    sign_in @user
+    sign_in FactoryGirl.create(:user)
   end
 
   # This should return the minimal set of attributes required to create a valid
   # Profile. As you add validations to Profile, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+   FactoryGirl.build(:profile).attributes.symbolize_keys
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+   FactoryGirl.build(:invalid_profile).attributes.symbolize_keys
+
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ProfilesController. Be sure to keep this updated too.
-  let(:valid_session) {  }
-
-  describe "GET #index" do
-    it "assigns all profiles as @profiles" do
-      profile = Profile.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:profiles)).to eq([profile])
-    end
-  end
+  let(:valid_session) { { } }
 
   describe "GET #show" do
     it "assigns the requested profile as @profile" do
       profile = Profile.create! valid_attributes
       get :show, {:id => profile.to_param}, valid_session
       expect(assigns(:profile)).to eq(profile)
-    end
-  end
-
-  describe "GET #new" do
-    it "assigns a new profile as @profile" do
-      get :new, {}, valid_session
-      expect(assigns(:profile)).to be_a_new(Profile)
     end
   end
 
@@ -73,50 +57,16 @@ RSpec.describe ProfilesController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Profile" do
-        expect {
-          post :create, {:profile => valid_attributes}, valid_session
-        }.to change(Profile, :count).by(1)
-      end
-
-      it "assigns a newly created profile as @profile" do
-        post :create, {:profile => valid_attributes}, valid_session
-        expect(assigns(:profile)).to be_a(Profile)
-        expect(assigns(:profile)).to be_persisted
-      end
-
-      it "redirects to the created profile" do
-        post :create, {:profile => valid_attributes}, valid_session
-        expect(response).to redirect_to(Profile.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved profile as @profile" do
-        post :create, {:profile => invalid_attributes}, valid_session
-        expect(assigns(:profile)).to be_a_new(Profile)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:profile => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
-
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryGirl.build(:invoice).attributes.symbolize_keys
       }
 
       it "updates the requested profile" do
         profile = Profile.create! valid_attributes
         put :update, {:id => profile.to_param, :profile => new_attributes}, valid_session
         profile.reload
-        skip("Add assertions for updated state")
       end
 
       it "assigns the requested profile as @profile" do
@@ -140,9 +90,9 @@ RSpec.describe ProfilesController, type: :controller do
       end
 
       it "re-renders the 'edit' template" do
-        profile = Profile.create! valid_attributes
-        put :update, {:id => profile.to_param, :profile => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+       profile = Profile.create! valid_attributes
+       put :update, {:id => profile.to_param, :profile => invalid_attributes}, valid_session
+       expect(response).to redirect_to(profile)
       end
     end
   end
