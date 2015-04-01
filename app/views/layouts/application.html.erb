@@ -8,7 +8,27 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="header-container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right red" >
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation"><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Project name</h3>
+  </div>
+</div>
+
+<div class="container">
+  <%= yield %>
+  <footer class="footer">
+  <p>&copy; Company 2014</p>
+  </footer>
+</div> <!-- /container -->
+
+
 
 </body>
 </html>
