@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
-      @profile = Profile::Update.new.update_with_route(@profile, profile_params)
+      @profile = Profile::UpdateRoute.new.update_with_route(@profile, profile_params)
       puts "PROFILE: #{@profile.class}"
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
