@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jdf</title>
+  <title>Chowdata.com</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:900,400' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,14 +18,14 @@
         <li role="presentation"><a href="#">Contact</a></li>
       </ul>
     </nav>
-    <h3 class="text-muted">Project name</h3>
+    <h3 class="text-muted">chowdata</h3>
   </div>
 </div>
 
 <div class="container">
   <%= yield %>
   <footer class="footer">
-  <p>&copy; Company 2014</p>
+  <p>&copy; chowdata.com, saving you money since <%= Time.now.year %> </p>
   </footer>
 </div> <!-- /container -->
 
